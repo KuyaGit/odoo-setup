@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:15
+    container_name: odoo_db
+    restart: unless-stopped
+    environment:
+      # PostgreSQL credentials
+      POSTGRES_DB: postgres
+      POSTGRES_USER: odoo
+      POSTGRES_PASSWORD: odoo
+    volumes:
+      # Persist database data
+      - pgdata:/var/lib/postgresql/data
+
+  odoo:
+    container_name: odoo
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    ports:
+      # Odoo web interface
+      - "8069:8069"
+    volumes:
+      # Mount source code for live development
+      - .:/opt/odoo
+      # Persist filestore and sessions
+      - odoo-data:/var/lib/odoo
+    environment:
+      # Avoid Python buffering (better logs)
+      PYTHONUNBUFFERED: "1"
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  odoo-data:
