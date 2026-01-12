@@ -291,6 +291,7 @@ http://localhost:8069
 ```
 
 - Create a new database
+  <img width="1470" height="872" alt="image" src="https://github.com/user-attachments/assets/27323cdc-1001-47f5-b01e-9287d0fc0017" />
 - Login with your admin credentials
 - Start developing 🎉
 
