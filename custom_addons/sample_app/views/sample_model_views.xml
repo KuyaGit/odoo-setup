@@ -1,78 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- 
-=============================================================================
-ODOO VIEWS, ACTIONS, AND MENUS DEFINITION
-=============================================================================
-This XML file defines how users interact with the 'sample.model' model.
-ORDER MATTERS: Define views before actions, actions before menus!
-=============================================================================
--->
 <odoo>
 
-    <!-- ===================================================================
-         SEARCH VIEW - Defines search/filter options
-         =================================================================== -->
     <record id="sample_model_view_search" model="ir.ui.view">
         <field name="name">sample.model.search</field>
         <field name="model">sample.model</field>
         <field name="arch" type="xml">
-            <search string="Sample Models">
-                <field name="name" string="Name"/>
+            <search>
+                <field name="name"/>
                 <field name="description"/>
-                <separator/>
                 <filter string="Active" name="filter_active" domain="[('active', '=', True)]"/>
                 <filter string="Archived" name="filter_archived" domain="[('active', '=', False)]"/>
-                <group expand="0" string="Group By">
-                    <filter string="Status" name="group_active" context="{'group_by': 'active'}"/>
-                    <filter string="Creation Date" name="group_create_date" context="{'group_by': 'create_date:month'}"/>
-                </group>
             </search>
         </field>
     </record>
 
-    <!-- ===================================================================
-         LIST (TREE) VIEW - Displays multiple records in a table
-         =================================================================== -->
     <record id="sample_model_view_list" model="ir.ui.view">
         <field name="name">sample.model.list</field>
         <field name="model">sample.model</field>
-        <field name="priority" eval="10"/>
         <field name="arch" type="xml">
-            <list string="Sample Models" default_order="create_date desc">
-                <field name="name" string="Name"/>
-                <field name="active" string="Active" widget="boolean_toggle"/>
-                <field name="create_date" string="Created On"/>
+            <list>
+                <field name="name"/>
+                <field name="active"/>
+                <field name="create_date"/>
             </list>
         </field>
     </record>
 
-    <!-- ===================================================================
-         FORM VIEW - For creating/editing single records
-         =================================================================== -->
     <record id="sample_model_view_form" model="ir.ui.view">
         <field name="name">sample.model.form</field>
         <field name="model">sample.model</field>
-        <field name="priority" eval="10"/>
         <field name="arch" type="xml">
-            <form string="Sample Model">
+            <form>
                 <sheet>
-                    <div class="oe_title">
-                        <label for="name"/>
-                        <h1>
-                            <field name="name" placeholder="Enter name..."/>
-                        </h1>
-                    </div>
                     <group>
-                        <group string="General Information">
-                            <field name="active" widget="boolean_toggle"/>
-                            <field name="create_date"/>
+                        <group>
+                            <field name="name"/>
+                            <field name="active"/>
                         </group>
-                        <group string="Additional Info">
+                        <group>
+                            <field name="create_date"/>
                         </group>
                     </group>
                     <notebook>
                         <page string="Description" name="description_page">
-                            <field name="description" placeholder="Enter a detailed description..." nolabel="1"/>
+                            <field name="description" nolabel="1" placeholder="Enter description..."/>
                         </page>
                     </notebook>
                 </sheet>
@@ -80,42 +51,26 @@ ORDER MATTERS: Define views before actions, actions before menus!
         </field>
     </record>
 
-    <!-- ===================================================================
-         WINDOW ACTION - Opens the view when menu is clicked
-         =================================================================== -->
     <record id="sample_model_action" model="ir.actions.act_window">
         <field name="name">Sample Models</field>
         <field name="res_model">sample.model</field>
         <field name="view_mode">list,form</field>
-        <field name="search_view_id" ref="sample_model_view_search"/>
-        <field name="context">{}</field>
-        <field name="domain">[]</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 Create your first sample record!
             </p>
-            <p>
-                Click the <strong>New</strong> button to add a new sample model record.
-            </p>
         </field>
     </record>
 
-    <!-- ===================================================================
-         MENU ITEMS - Navigation structure
-         =================================================================== -->
-    
-    <!-- Root menu (top-level app) -->
     <menuitem id="sample_app_menu_root"
               name="Sample App"
               sequence="100"/>
     
-    <!-- Category submenu -->
     <menuitem id="sample_app_menu_category"
               name="Sample Models"
               parent="sample_app_menu_root"
               sequence="10"/>
     
-    <!-- Action menu item -->
     <menuitem id="sample_model_menu_action"
               name="All Sample Models"
               parent="sample_app_menu_category"

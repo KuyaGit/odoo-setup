@@ -40,12 +40,6 @@ This addon demonstrates:
 Perfect for beginners learning Odoo development!
     """,
     
-    # 'author': Creator of the addon
-    'author': 'Your Company Name',
-    
-    # 'website': Optional URL for more information
-    'website': 'https://www.yourcompany.com',
-    
     # -------------------------------------------------------------------------
     # TECHNICAL INFORMATION
     # -------------------------------------------------------------------------

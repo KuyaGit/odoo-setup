@@ -84,8 +84,6 @@ COPY --chown=odoo:odoo . /opt/odoo
 # Expose Odoo ports
 EXPOSE 8069 8071
 
-RUN pwd
-
 # Run Odoo in development mode
 # Run Odoo in development mode using virtual environment
 CMD ["/home/odoo/odoo-venv/bin/python", "/opt/odoo/odoo-bin", "--config=/etc/odoo/odoo.conf", "--data-dir=/var/lib/odoo"]
