@@ -296,6 +296,23 @@ http://localhost:8069
 - Start developing 🎉
 
 ---
+## 📄 About the Sample Addon: `custom_addons/sample_app/README.md`
+
+While this main README explains the project-wide Odoo Docker setup, you'll also find **addon-specific documentation** in the `custom_addons/sample_app` directory.
+
+Inside `custom_addons/sample_app/`, there's a dedicated `README.md` file. This addon-level README gives details about:
+- The purpose and features of the sample addon
+- Its custom model, views, and menus
+- Installation and development tips for extending or adapting the addon
+
+If you're interested in exploring, customizing, or learning about Odoo addon development, be sure to check out:
+```
+custom_addons/sample_app/README.md
+```
+for a focused guide on the addon itself, including technical and functional documentation.
+
+
+---
 
 ## ✅ Summary
 
